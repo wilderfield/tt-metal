@@ -411,8 +411,8 @@ bool matmul_large_block(
     set_math_fid_masks(math_fid_mask, math_fidelity);
     // If we're testing LoFi/HiFi2 we generate matching golden (trunc LSB).
     // Note that this will work only for multiplying with identity matrix
-    for (auto& i : golden) {
-        i = std::bit_cast<bfloat16>(static_cast<uint16_t>(std::bit_cast<uint16_t>(i) & math_fid_mask));
+    for (auto& val : golden) {
+        val = std::bit_cast<bfloat16>(static_cast<uint16_t>(std::bit_cast<uint16_t>(val) & math_fid_mask));
     }
 
     if (output_rm) {

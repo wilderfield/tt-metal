@@ -423,15 +423,15 @@ GroupNormShardedProgramFactory::cached_program_t GroupNormShardedProgramFactory:
             mcast_groups[group_index].push_back(core_coords[i]);
         }
     } else {
-        for (auto& i : core_coords2D) {
-            for (size_t j = 0; j < i.size(); ++j) {
-                if (mcast_sender_core_ranges.contains(CoreRange(i[j]))) {
+        for (auto& core_group : core_coords2D) {
+            for (size_t j = 0; j < core_group.size(); ++j) {
+                if (mcast_sender_core_ranges.contains(CoreRange(core_group[j]))) {
                     group_index += 1;
                 }
                 if (group_index >= static_cast<int>(mcast_groups.size())) {
                     mcast_groups.push_back(std::vector<CoreCoord>());  // Add a new group
                 }
-                mcast_groups[group_index].push_back(i[j]);
+                mcast_groups[group_index].push_back(core_group[j]);
             }
         }
     }
@@ -971,12 +971,12 @@ GroupNormShardedProgramFactory::cached_program_t GroupNormShardedProgramFactory:
 
                 // add all coords within a group
                 std::vector<uint32_t> mcast_noc_xy;
-                for (auto c : group) {
-                    CoreCoord coord = device->worker_core_from_logical_core(c);
+                for (auto core : group) {
+                    CoreCoord coord = device->worker_core_from_logical_core(core);
                     mcast_noc_xy.push_back(coord.x);
                 }
-                for (auto c : group) {
-                    CoreCoord coord = device->worker_core_from_logical_core(c);
+                for (auto core : group) {
+                    CoreCoord coord = device->worker_core_from_logical_core(core);
                     mcast_noc_xy.push_back(coord.y);
                 }
                 mcast_sender_args.insert(mcast_sender_args.end(), mcast_noc_xy.begin(), mcast_noc_xy.end());

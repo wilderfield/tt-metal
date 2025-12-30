@@ -140,10 +140,10 @@ void verify_cb_config(
                         cb_config_vector);
 
                     uint32_t cb_addr = l1_unreserved_base;
-                    for (auto& i : golden_cb_config) {
-                        const uint32_t index = i.cb_id * sizeof(uint32_t);
-                        const uint32_t cb_num_pages = i.num_pages;
-                        const uint32_t cb_size = cb_num_pages * i.page_size;
+                    for (auto& config : golden_cb_config) {
+                        const uint32_t index = config.cb_id * sizeof(uint32_t);
+                        const uint32_t cb_num_pages = config.num_pages;
+                        const uint32_t cb_size = cb_num_pages * config.page_size;
                         const bool addr_match = cb_config_vector.at(index) == cb_addr;
                         const bool size_match = cb_config_vector.at(index + 1) == cb_size;
                         const bool num_pages_match = cb_config_vector.at(index + 2) == cb_num_pages;
@@ -557,12 +557,12 @@ TEST_F(MeshWorkloadTestSuite, EltwiseBinaryMeshWorkload) {
                     output_bufs[(col_idx * worker_grid_size.y) + row_idx],
                     device_coord);
                 if (device_coord[0] <= num_rows_in_mesh_workload - 1) {
-                    for (auto i : dst_vec) {
-                        EXPECT_EQ(static_cast<float>(i), 5);
+                    for (auto val : dst_vec) {
+                        EXPECT_EQ(static_cast<float>(val), 5);
                     }
                 } else {
-                    for (auto i : dst_vec) {
-                        EXPECT_EQ(static_cast<float>(i), 6);
+                    for (auto val : dst_vec) {
+                        EXPECT_EQ(static_cast<float>(val), 6);
                     }
                 }
             }

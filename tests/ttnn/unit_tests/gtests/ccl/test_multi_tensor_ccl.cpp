@@ -159,9 +159,9 @@ TEST_F(MeshDevice1x4Fixture, ReduceScatter) {
 
     for (int dev_idx = 0; dev_idx < mesh_devices.size(); dev_idx++) {
         auto data = output_tensors[dev_idx].to_vector<bfloat16>();
-        for (auto i : data) {
+        for (auto val : data) {
             float expected = static_cast<float>(mesh_devices.size());
-            EXPECT_EQ(static_cast<float>(i), expected);
+            EXPECT_EQ(static_cast<float>(val), expected);
         }
     }
 }
@@ -190,9 +190,9 @@ TEST_F(MeshDevice1x4Fixture, AllReduce) {
     auto disaggregated_output_tensors = tt::tt_metal::experimental::unit_mesh::disaggregate(all_reduced_tensor);
     for (int dev_idx = 0; dev_idx < mesh_devices.size(); dev_idx++) {
         auto data = disaggregated_output_tensors[dev_idx].to_vector<bfloat16>();
-        for (auto i : data) {
+        for (auto val : data) {
             float expected = static_cast<float>(mesh_devices.size());
-            EXPECT_EQ(static_cast<float>(i), expected);
+            EXPECT_EQ(static_cast<float>(val), expected);
         }
     }
 }

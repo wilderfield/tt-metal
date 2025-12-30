@@ -227,8 +227,8 @@ TEST_F(MeshTraceTest2x4, EltwiseBinaryMeshTrace) {
                         output_bufs[(col_idx * worker_grid_size.y) + row_idx],
                         MeshCoordinate(logical_y, logical_x));
                     auto expected_value = expected_values[logical_x + (logical_y * mesh_device_->num_cols())];
-                    for (auto i : dst_vec) {
-                        EXPECT_EQ(static_cast<float>(i), expected_value);
+                    for (auto val : dst_vec) {
+                        EXPECT_EQ(static_cast<float>(val), expected_value);
                     }
                 }
             }

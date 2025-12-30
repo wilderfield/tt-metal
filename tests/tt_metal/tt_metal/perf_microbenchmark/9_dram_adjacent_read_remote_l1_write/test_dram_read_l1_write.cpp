@@ -383,8 +383,8 @@ void get_l1_writer_core_coords_wormhole_b0(
         all_cores_ordered.push_back(CoreCoord(dram_reader_core.x + 2, dram_reader_core.y));
     }
     std::set<CoreRange> all_cores_set;
-    for (auto i : all_cores_ordered) {
-        all_cores_set.insert(CoreRange(i));
+    for (auto core : all_cores_ordered) {
+        all_cores_set.insert(CoreRange(core));
     }
     all_cores = CoreRangeSet(all_cores_set);
 }
@@ -398,8 +398,8 @@ void get_l1_writer_core_coords_blackhole(
         all_cores_ordered.push_back(CoreCoord(dram_reader_core.x + 2, dram_reader_core.y));
     }
     std::set<CoreRange> all_cores_set;
-    for (auto i : all_cores_ordered) {
-        all_cores_set.insert(CoreRange(i));
+    for (auto core : all_cores_ordered) {
+        all_cores_set.insert(CoreRange(core));
     }
     all_cores = CoreRangeSet(all_cores_set);
 }
@@ -411,8 +411,8 @@ void get_l1_writer_core_coords_grayskull(
         all_cores_ordered.push_back(CoreCoord(dram_reader_core.x + 1, dram_reader_core.y + 1));
     }
     std::set<CoreRange> all_cores_set;
-    for (auto i : all_cores_ordered) {
-        all_cores_set.insert(CoreRange(i));
+    for (auto core : all_cores_ordered) {
+        all_cores_set.insert(CoreRange(core));
     }
     all_cores = CoreRangeSet(all_cores_set);
 }

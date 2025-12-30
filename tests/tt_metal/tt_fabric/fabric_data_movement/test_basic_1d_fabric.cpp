@@ -836,9 +836,9 @@ void RunTestUnicastTGGateways(BaseFabricFixture* fixture) {
     for (const auto& mmio_chip_id : mmio_chip_ids) {
         const auto& tunnels_from_mmio =
             tt::tt_metal::MetalContext::instance().get_cluster().get_tunnels_from_mmio_device(mmio_chip_id);
-        for (const auto& t : tunnels_from_mmio) {
+        for (const auto& tunnel : tunnels_from_mmio) {
             // idx 0 in the tunnel is the mmio chip itself
-            const auto remote_chip_id = t[1];
+            const auto remote_chip_id = tunnel[1];
             log_info(tt::LogTest, "Running tests for chips: {} and {}", mmio_chip_id, remote_chip_id);
             run_unicast_test_bw_chips(fixture, mmio_chip_id, remote_chip_id, 1);
             run_unicast_test_bw_chips(fixture, remote_chip_id, mmio_chip_id, 1);

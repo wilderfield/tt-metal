@@ -1516,8 +1516,8 @@ bool validation_single_core(
 
     std::vector<float> result_vec;
     result_vec.reserve(result_untilized.size());
-    for (auto i : result_untilized) {
-        result_vec.push_back(to_float(static_cast<bfloat16>(i)));
+    for (auto val : result_untilized) {
+        result_vec.push_back(to_float(static_cast<bfloat16>(val)));
     }
 
     // for (int i=0; i<result_vec.size(); ++i) {

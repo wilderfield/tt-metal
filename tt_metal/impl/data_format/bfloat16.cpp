@@ -132,9 +132,9 @@ std::vector<bfloat16> create_random_vector_of_bfloat16_native(
     auto rand_float = std::bind(std::uniform_real_distribution<float>(0, rand_max_float), std::mt19937(seed));
 
     std::vector<bfloat16> vec(num_bytes / sizeof(bfloat16), 0);
-    for (auto& i : vec) {
+    for (auto& elem : vec) {
         float num_1_float = rand_float() + offset;
-        i = bfloat16(num_1_float);
+        elem = bfloat16(num_1_float);
     }
     return vec;
 }

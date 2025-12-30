@@ -269,18 +269,18 @@ AllReduceCreateQkvHeadsMeshWorkloadFactory::create_at(
     vcores_noc_x_coords.reserve(v_cores_vector.size());
     vcores_noc_y_coords.reserve(v_cores_vector.size());
 
-    for (auto i : q_cores_vector) {
-        auto worker_core = mesh_device->worker_core_from_logical_core(i);
+    for (auto core : q_cores_vector) {
+        auto worker_core = mesh_device->worker_core_from_logical_core(core);
         qcores_noc_x_coords.push_back(worker_core.x);
         qcores_noc_y_coords.push_back(worker_core.y);
     }
-    for (auto i : k_cores_vector) {
-        auto worker_core = mesh_device->worker_core_from_logical_core(i);
+    for (auto core : k_cores_vector) {
+        auto worker_core = mesh_device->worker_core_from_logical_core(core);
         kcores_noc_x_coords.push_back(worker_core.x);
         kcores_noc_y_coords.push_back(worker_core.y);
     }
-    for (auto i : v_cores_vector) {
-        auto worker_core = mesh_device->worker_core_from_logical_core(i);
+    for (auto core : v_cores_vector) {
+        auto worker_core = mesh_device->worker_core_from_logical_core(core);
         vcores_noc_x_coords.push_back(worker_core.x);
         vcores_noc_y_coords.push_back(worker_core.y);
     }
