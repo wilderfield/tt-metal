@@ -25,8 +25,8 @@ TensAddr::TensAddr(const std::vector<std::uint32_t>& shape) : sh(shape) {}
 
 std::uint32_t TensAddr::numel() const {
     std::uint32_t prod = 1;
-    for (unsigned int j : sh) {
-        prod *= j;
+    for (unsigned int dim : sh) {
+        prod *= dim;
     }
     return prod;
 }

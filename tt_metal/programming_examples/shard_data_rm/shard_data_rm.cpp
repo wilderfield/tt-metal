@@ -132,8 +132,8 @@ int main() {
     }
 
     fmt::print("Original tensor values: ");
-    for (auto src_vec_idx : src_vec) {
-        fmt::print("{:0.1f} ", static_cast<float>(src_vec_idx));
+    for (auto val : src_vec) {
+        fmt::print("{:0.1f} ", static_cast<float>(val));
     }
     fmt::print("\n");
 
