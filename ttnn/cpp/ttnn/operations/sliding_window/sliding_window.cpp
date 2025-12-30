@@ -599,8 +599,7 @@ static GatherConfig reduce_flattened_transfers(const std::vector<DestinationTran
     GatherRoute current_route;
     current_route.header.noc_x = transfers[0].noc_x;
     current_route.header.noc_y = transfers[0].noc_y;
-    for (size_t i = 0; i < transfers.size(); i++) {
-        const auto& t = transfers[i];
+    for (auto t : transfers) {
         bool same_core = (t.noc_x == current_route.header.noc_x) && (t.noc_y == current_route.header.noc_y);
         if (!same_core) {
             current_route.header.num_transfers = static_cast<uint16_t>(current_route.transfers.size());

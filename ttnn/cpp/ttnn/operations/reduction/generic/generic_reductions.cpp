@@ -40,11 +40,11 @@ std::pair<ttnn::SmallVector<int>, ttnn::SmallVector<int>> split_height_width_dim
     ttnn::SmallVector<int> non_height_width_dims{}, height_width_dims{};
     const auto& input_shape = input_tensor_arg.logical_shape();
     int rank = input_shape.size();
-    for (int i = 0; i < dim.size(); i++) {
-        if (dim[i] >= (rank - 2)) {
-            height_width_dims.push_back(dim[i]);
+    for (int i : dim) {
+        if (i >= (rank - 2)) {
+            height_width_dims.push_back(i);
         } else {
-            non_height_width_dims.push_back(dim[i]);
+            non_height_width_dims.push_back(i);
         }
     }
     return {non_height_width_dims, height_width_dims};

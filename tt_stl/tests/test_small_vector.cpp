@@ -279,8 +279,8 @@ TEST_F(SmallVectorIntTest, ForwardAndReverseIterators) {
     Vec vec{1, 2, 3, 4};
     // Sum elements via forward iterators.
     int sum = 0;
-    for (auto* it = vec.begin(); it != vec.end(); ++it) {
-        sum += *it;
+    for (int& it : vec) {
+        sum += it;
     }
     EXPECT_EQ(sum, 10);
     // Copy into a std::vector via const iterators.

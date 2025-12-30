@@ -15,8 +15,8 @@ SliceWriteDeviceOperation::program_factory_t SliceWriteDeviceOperation::select_p
     const operation_attributes_t& operation_attributes, const tensor_args_t& tensor_args) {
     const auto& input = tensor_args.input;
     bool has_step = false;
-    for (uint32_t i = 0; i < operation_attributes.step.size(); i++) {
-        if (operation_attributes.step[i] != 1) {
+    for (unsigned int i : operation_attributes.step) {
+        if (i != 1) {
             has_step = true;
             break;
         }

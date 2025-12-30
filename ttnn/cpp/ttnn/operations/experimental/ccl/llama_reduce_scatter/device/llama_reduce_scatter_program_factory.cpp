@@ -186,8 +186,8 @@ std::vector<std::vector<ReadRequest>> distribute_work_evenly(
 std::vector<ReadRequest> flatten_schedule(const std::vector<std::vector<ReadRequest>>& schedule) {
     // create a flattened schedule
     std::vector<ReadRequest> schedule_flattened;
-    for (uint32_t i = 0; i < schedule.size(); ++i) {
-        schedule_flattened.insert(schedule_flattened.end(), schedule[i].begin(), schedule[i].end());
+    for (const auto& i : schedule) {
+        schedule_flattened.insert(schedule_flattened.end(), i.begin(), i.end());
     }
     return schedule_flattened;
 }
@@ -195,10 +195,9 @@ std::vector<ReadRequest> flatten_schedule(const std::vector<std::vector<ReadRequ
 std::string schedule_to_string(const std::vector<std::vector<ReadRequest>>& schedule) {
     auto flattened_schedule = flatten_schedule(schedule);
     std::string result = "{";
-    for (uint32_t i = 0; i < flattened_schedule.size(); ++i) {
-        result += "{" + std::to_string(flattened_schedule[i].bank_id) + ", " +
-                  std::to_string(flattened_schedule[i].read_offset) + ", " +
-                  std::to_string(flattened_schedule[i].read_size) + "}, ";
+    for (auto& i : flattened_schedule) {
+        result += "{" + std::to_string(i.bank_id) + ", " + std::to_string(i.read_offset) + ", " +
+                  std::to_string(i.read_size) + "}, ";
     }
     result += "}";
     return result;
