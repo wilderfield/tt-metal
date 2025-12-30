@@ -355,7 +355,7 @@ GroupNormShardedProgramFactory::cached_program_t GroupNormShardedProgramFactory:
     // create a vector of cores, in either RM or CM
     std::vector<CoreCoord> core_coords =
         grid_to_cores(num_cores, num_cores_c, num_cores_r, shard_orientation == ShardOrientation::ROW_MAJOR);
-    for (auto& core_coord : core_coords) {
+    for ([[maybe_unused]] const auto& core_coord : core_coords) {
         log_debug(tt::LogOp, "worker coord: {} {}", core_coord.x, core_coord.y);
     }
     std::vector<std::vector<CoreCoord>> core_coords2D;
