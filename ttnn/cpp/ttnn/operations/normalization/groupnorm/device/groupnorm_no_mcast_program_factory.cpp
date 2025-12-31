@@ -1017,11 +1017,11 @@ GroupNormNoMcastProgramFactory::cached_program_t GroupNormNoMcastProgramFactory:
             }
 
             std::vector<uint32_t> mcast_noc_xy;
-            for (auto core : group) {
+            for (const auto& core : group) {
                 CoreCoord coord = device->worker_core_from_logical_core(core);
                 mcast_noc_xy.push_back(coord.x);
             }
-            for (auto core : group) {
+            for (const auto& core : group) {
                 CoreCoord coord = device->worker_core_from_logical_core(core);
                 mcast_noc_xy.push_back(coord.y);
             }

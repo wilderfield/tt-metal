@@ -180,7 +180,7 @@ ArgMaxSingleCoreProgramFactory::cached_program_t ArgMaxSingleCoreProgramFactory:
 
     // Runtime args
     const auto cores = grid_to_cores(num_cores, grid_size.x, grid_size.y, false);
-    for (auto core : cores) {
+    for (const auto& core : cores) {
         tt::tt_metal::SetRuntimeArgs(program, reader_kernel_id, core, {src_buffer->address(), dst_buffer->address()});
     }
 

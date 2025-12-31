@@ -647,7 +647,7 @@ tt::tt_metal::operation::ProgramWithCallbacks create_program_dram_sharded(
     }
 
     std::vector<CoreCoord> mcast_receiver_coords = corerange_to_cores(mcast_receivers);
-    for (auto core : mcast_receiver_coords) {
+    for (const auto& core : mcast_receiver_coords) {
         // in0 receivers rt args
         std::vector<uint32_t> mm_in0_receiver_args;
         // mcast receiver - 3

@@ -258,7 +258,7 @@ UpsampleBilinearProgramFactory::cached_program_t UpsampleBilinearProgramFactory:
 
     uint32_t total_sticks_processed = 0;
 
-    for (auto core_coord : logical_cores) {
+    for (const auto& core_coord : logical_cores) {
         // Calculate actual output sticks for this core
         uint32_t out_sticks_this_core = std::min(max_out_sticks_per_core, total_output_sticks - total_sticks_processed);
 

@@ -281,8 +281,8 @@ void SdpaDecodeDeviceOperation::validate_on_program_cache_miss(
             D);
 
         // Check valid seqlen
-        for (unsigned int cur_po : operation_attributes.cur_pos) {
-            TT_FATAL(cur_po < k_shape[-2], "cur_pos must be <= K sequence dim");
+        for (unsigned int cur_pos_val : operation_attributes.cur_pos) {
+            TT_FATAL(cur_pos_val < k_shape[-2], "cur_pos must be <= K sequence dim");
         }
     }
 
