@@ -688,7 +688,7 @@ inline void override_agmm_fusion_program_parameters(
 
     if (not src1_sharded) {
         auto& writer_runtime_args_by_core = GetRuntimeArgs(program, override_variables.kernels.at(0));
-        for (auto core : override_variables.cores) {
+        for (const auto& core : override_variables.cores) {
             auto& writer_runtime_args = writer_runtime_args_by_core[core.x][core.y];
 
             /* in1 */
