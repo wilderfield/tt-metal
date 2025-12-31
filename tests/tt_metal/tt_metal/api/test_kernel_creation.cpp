@@ -55,7 +55,7 @@ TEST_F(MeshDispatchFixture, DISABLED_TensixIdleEthCreateKernelsOnDispatchCores) 
     if (this->IsSlowDispatch()) {
         GTEST_SKIP() << "This test is only supported in fast dispatch mode";
     }
-    for (const auto& mesh_device : this->devices_) {
+    for (auto mesh_device : this->devices_) {
         auto* device = mesh_device->get_devices()[0];
 
         distributed::MeshWorkload workload;
