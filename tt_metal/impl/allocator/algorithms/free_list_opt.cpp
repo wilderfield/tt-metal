@@ -440,8 +440,8 @@ void FreeListOpt::dump_blocks(std::ostream& out) const {
             out << "  Size class " << i << ": (" << size_t(size_segregated_base * (size_t{1} << i))
                 << " - inf) blocks: ";
         }
-        for (unsigned long block : free_blocks_segregated_by_size_[i]) {
-            out << block << " ";
+        for (size_t block_id : free_blocks_segregated_by_size_[i]) {
+            out << block_id << " ";
         }
 
         out << std::endl;
