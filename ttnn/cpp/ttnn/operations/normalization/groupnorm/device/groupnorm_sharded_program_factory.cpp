@@ -880,7 +880,7 @@ GroupNormShardedProgramFactory::cached_program_t GroupNormShardedProgramFactory:
     log_debug(tt::LogOp, "num_cores_per_batch: {}", num_cores_per_batch);
     log_debug(tt::LogOp, "num_cores_per_group: {}", num_cores_per_group);
 
-    for (const auto& group : mcast_groups) {
+    for (auto group : mcast_groups) {
         bool rectangle_grid = is_rectangle_grid(group);
 
         for (size_t j = 0; j < group.size(); ++j) {
