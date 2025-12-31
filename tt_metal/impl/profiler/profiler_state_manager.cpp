@@ -65,8 +65,10 @@ void ProfilerStateManager::cleanup_device_profilers() {
     std::vector<std::thread> threads(this->device_profiler_map.size());
 
     uint32_t i = 0;
-    for (auto& entry : this->device_profiler_map) {
-        threads[i] = std::thread([&profiler = entry.second]() {
+    // NOLINTNEXTLINE(modernize-loop-convert)
+    for (auto it = this->device_profiler_map.begin(); it != this->device_profiler_map.end(); ++it) {
+        threads[i] = std::thread([it]() {
+            DeviceProfiler& profiler = it->second;
             profiler.dumpDeviceResults();
             profiler.destroyTracyContexts();
         });
