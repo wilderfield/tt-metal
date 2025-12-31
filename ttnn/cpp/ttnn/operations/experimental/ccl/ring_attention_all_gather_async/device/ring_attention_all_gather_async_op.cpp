@@ -229,7 +229,7 @@ std::vector<Tensor> ring_attention_all_gather_async_impl(
 
     std::vector<std::optional<Tensor>> optional_output_tensors;
     optional_output_tensors.reserve(persistent_output_buffer.size());
-    for (auto& buffer : persistent_output_buffer) {
+    for (const auto& buffer : persistent_output_buffer) {
         optional_output_tensors.push_back(buffer);
     }
 
