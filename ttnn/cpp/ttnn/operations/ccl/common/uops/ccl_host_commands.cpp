@@ -383,7 +383,7 @@ static std::vector<HostNocTransferBurstGrouping> densely_pack_noc_transfers(tt::
 
     size_t group_size_bytes = 0;
     transfer_burst_groupings.push_back({});
-    for (auto transfer_info : transfer_infos) {
+    for (const auto& transfer_info : transfer_infos) {
         group_size_bytes += transfer_info.noc_transfer_size_bytes;
         bool create_new_group = group_size_bytes >= cb_size_bytes;
         if (create_new_group) {
