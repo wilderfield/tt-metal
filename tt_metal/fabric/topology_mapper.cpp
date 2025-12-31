@@ -371,7 +371,7 @@ TopologyMapper::TopologyMapper(
         }
 
         // Decode and populate mesh_host_rank_to_mpi_rank_ from gathered data
-        for (unsigned long encoded : gathered) {
+        for (const auto encoded : gathered) {
             if (encoded == sentinel) {
                 continue;
             }
