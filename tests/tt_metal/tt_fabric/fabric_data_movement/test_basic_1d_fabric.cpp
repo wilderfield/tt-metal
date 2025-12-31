@@ -1079,7 +1079,7 @@ void RunTestMCastConnAPI(
         ((uint64_t)sender_status[TT_FABRIC_WORD_CNT_INDEX + 1] << 32) | sender_status[TT_FABRIC_WORD_CNT_INDEX];
 
     for (auto [routing_direction, physical_end_device_ids] : physical_end_device_ids_by_dir) {
-        for (int& device_id : physical_end_device_ids) {
+        for (int device_id : physical_end_device_ids) {
             log_info(tt::LogTest, "Checking Status of {} Rx on physical device {}", routing_direction, device_id);
 
             const auto& receiver_device = fixture->get_device(device_id);
@@ -1619,7 +1619,7 @@ void RunTest2DMCastConnAPI(
     uint64_t sender_bytes =
         ((uint64_t)sender_status[TT_FABRIC_WORD_CNT_INDEX + 1] << 32) | sender_status[TT_FABRIC_WORD_CNT_INDEX];
 
-    for (unsigned int& rx_physical_device_id : rx_physical_device_ids) {
+    for (unsigned int rx_physical_device_id : rx_physical_device_ids) {
         log_info(tt::LogTest, "Checking Status of Rx on physical device {}", rx_physical_device_id);
 
         const auto& receiver_device = fixture->get_device(rx_physical_device_id);
@@ -1841,7 +1841,7 @@ void RunTestChipMCast1D(BaseFabricFixture* fixture, RoutingDirection dir, uint32
         ((uint64_t)sender_status[TT_FABRIC_WORD_CNT_INDEX + 1] << 32) | sender_status[TT_FABRIC_WORD_CNT_INDEX];
 
     for (auto [routing_direction, physical_end_device_ids] : physical_end_device_ids_by_dir) {
-        for (int& device_id : physical_end_device_ids) {
+        for (int device_id : physical_end_device_ids) {
             const auto& receiver_device = fixture->get_device(device_id);
 
             log_info(
