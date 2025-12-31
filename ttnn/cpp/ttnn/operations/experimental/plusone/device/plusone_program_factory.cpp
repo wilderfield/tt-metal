@@ -66,7 +66,7 @@ PlusOneProgramFactory::cached_program_t PlusOneProgramFactory::create(
 
     auto cores = corerange_to_cores(all_cores, num_cores, true);
 
-    for (auto core : cores) {
+    for (const auto& core : cores) {
         tt::tt_metal::SetRuntimeArgs(program, reader_kernel_id, core, {src_buffer->address()});
     }
 
