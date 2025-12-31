@@ -2219,7 +2219,7 @@ process_gather_in0_program_and_create_override_variables(
     auto all_cores_vec = corerange_to_cores(all_cores, std::nullopt, row_major);
     auto worker_cores_vec = corerange_to_cores(all_worker_cores, std::nullopt, row_major);
     auto hop_cores_vec = corerange_to_cores(hop_cores, std::nullopt, row_major);
-    for (const auto& core : all_cores_vec) {
+    for (auto core : all_cores_vec) {
         auto all_worker_cores_iter = std::find(worker_cores_vec.begin(), worker_cores_vec.end(), core);
         auto hop_cores_iter = std::find(hop_cores_vec.begin(), hop_cores_vec.end(), core);
         bool core_is_in_all_worker_cores = all_worker_cores_iter != worker_cores_vec.end();
