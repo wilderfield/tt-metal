@@ -356,7 +356,7 @@ void RecvAsyncMeshWorkloadFactory::override_runtime_arguments(
         const auto& output_tensor = tensor_args.output_tensor;
 
         if (!socket_storage_in_dram) {
-            for (auto receiver_core_coord : receiver_core_coords) {
+            for (const auto& receiver_core_coord : receiver_core_coords) {
                 auto& writer_runtime_args = GetRuntimeArgs(program, writer_kernel_id, receiver_core_coord);
 
                 writer_runtime_args[0] = mesh_socket.get_config_buffer()->address();
