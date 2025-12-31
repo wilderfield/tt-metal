@@ -448,8 +448,8 @@ void FreeListOpt::dump_blocks(std::ostream& out) const {
     }
 
     out << "Free slots in block table: ";
-    for (unsigned long free_meta_block_indice : free_meta_block_indices_) {
-        out << free_meta_block_indice << " ";
+    for (unsigned long free_meta_block_index : free_meta_block_indices_) {
+        out << free_meta_block_index << " ";
     }
     out << std::endl;
 
