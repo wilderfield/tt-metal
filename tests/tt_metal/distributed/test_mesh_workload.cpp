@@ -140,7 +140,7 @@ void verify_cb_config(
                         cb_config_vector);
 
                     uint32_t cb_addr = l1_unreserved_base;
-                    for (auto& config : golden_cb_config) {
+                    for (const auto& config : golden_cb_config) {
                         const uint32_t index = config.cb_id * sizeof(uint32_t);
                         const uint32_t cb_num_pages = config.num_pages;
                         const uint32_t cb_size = cb_num_pages * config.page_size;
