@@ -195,7 +195,7 @@ std::vector<ReadRequest> flatten_schedule(const std::vector<std::vector<ReadRequ
 std::string schedule_to_string(const std::vector<std::vector<ReadRequest>>& schedule) {
     auto flattened_schedule = flatten_schedule(schedule);
     std::string result = "{";
-    for (auto& entry : flattened_schedule) {
+    for (const auto& entry : flattened_schedule) {
         result += "{" + std::to_string(entry.bank_id) + ", " + std::to_string(entry.read_offset) + ", " +
                   std::to_string(entry.read_size) + "}, ";
     }

@@ -374,7 +374,7 @@ void addFabricMuxEvents(
     std::unordered_map<CoreCoord, std::queue<tracy::TTDeviceMarker>>& fabric_mux_markers,
     const CoreCoord& fabric_mux_core) {
     using EMD = KernelProfilerNocEventMetadata;
-    for (auto& marker : markers) {
+    for (const auto& marker : markers) {
         if (isMarkerATimestampedDatapoint(marker) && CoreCoord(marker.core_x, marker.core_y) == fabric_mux_core &&
             std::get<EMD::LocalNocEvent>(EMD(marker.data).getContents()).noc_xfer_type == EMD::NocEventType::WRITE_) {
             fabric_mux_markers[fabric_mux_core].push(marker);
@@ -386,7 +386,7 @@ void removeFabricMuxEvents(
     std::vector<std::variant<FabricEventMarkers, tracy::TTDeviceMarker>>& coalesced_events,
     const CoreCoord& fabric_mux_core) {
     std::vector<std::variant<FabricEventMarkers, tracy::TTDeviceMarker>> filtered_events;
-    for (auto& coalesced_event : coalesced_events) {
+    for (const auto& coalesced_event : coalesced_events) {
         if (std::holds_alternative<tracy::TTDeviceMarker>(coalesced_event)) {
             auto event = std::get<tracy::TTDeviceMarker>(coalesced_event);
 

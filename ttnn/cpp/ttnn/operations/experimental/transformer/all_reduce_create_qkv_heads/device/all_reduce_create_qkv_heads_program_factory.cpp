@@ -834,7 +834,7 @@ void AllReduceCreateQkvHeadsMeshWorkloadFactory::override_runtime_arguments(
         auto& reduction_reader_args_by_core = GetRuntimeArgs(program, shared_vars.reduction_reader_kernel_id);
         auto& reduction_writer_args_by_core = GetRuntimeArgs(program, shared_vars.reduction_writer_kernel_id);
 
-        for (auto core : shared_vars.output_cores_vec) {
+        for (const auto& core : shared_vars.output_cores_vec) {
             auto& reader_args = reduction_reader_args_by_core[core.x][core.y];
             reader_args[0] = q_base_addr;
             reader_args[1] = k_base_addr;

@@ -423,7 +423,7 @@ GroupNormShardedProgramFactory::cached_program_t GroupNormShardedProgramFactory:
             mcast_groups[group_index].push_back(core_coords[i]);
         }
     } else {
-        for (auto& core_group : core_coords2D) {
+        for (const auto& core_group : core_coords2D) {
             for (size_t j = 0; j < core_group.size(); ++j) {
                 if (mcast_sender_core_ranges.contains(CoreRange(core_group[j]))) {
                     group_index += 1;
@@ -996,7 +996,7 @@ GroupNormShardedProgramFactory::cached_program_t GroupNormShardedProgramFactory:
     uint32_t gamma_tile_start_id = 0;
     uint32_t beta_tile_start_id = 0;
     uint32_t input_mask_tile_start_id = 0;
-    for (const auto& core : core_coords) {
+    for (auto core : core_coords) {
         std::vector<uint32_t> writer_mcast_sender_args;
         writer_mcast_sender_args.push_back(packed_cinv_value);
         writer_mcast_sender_args.push_back(packed_winv_value);

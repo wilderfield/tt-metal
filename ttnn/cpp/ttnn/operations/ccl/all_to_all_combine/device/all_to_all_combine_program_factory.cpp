@@ -273,7 +273,7 @@ AllToAllCombineDeviceOperation::AllToAllCombineFromSparse::create_at(
     uint32_t link_id = 0;
     uint32_t tokens_per_core_start = 0;
     log_debug(tt::LogOp, "Runtime arguments are being calculated for MeshCoordinate {}", mesh_coordinate);
-    for (auto& sender_core : sender_cores) {
+    for (const auto& sender_core : sender_cores) {
         std::vector<uint32_t> writer_runtime_args = {
             output_tensor.buffer()->address(),
             (uint32_t)cross_device_semaphore.address(),

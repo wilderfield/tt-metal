@@ -419,7 +419,7 @@ AllToAllDispatchDeviceOperation::AllToAllDispatchSparse::create_at(
 
     uint32_t link_id = 0;
     uint32_t tokens_per_core_start = 0;
-    for (auto& sender_core : sender_cores) {
+    for (const auto& sender_core : sender_cores) {
         std::vector<uint32_t> writer_runtime_args = {
             input_tensor.buffer()->address(),
             indices_tensor.buffer()->address(),
