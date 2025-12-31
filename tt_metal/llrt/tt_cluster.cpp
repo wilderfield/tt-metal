@@ -1124,7 +1124,7 @@ void Cluster::reserve_ethernet_cores_for_fabric_routers(uint8_t num_routing_plan
 
             const uint8_t num_cores_to_reserve = std::min(num_routing_planes, static_cast<uint8_t>(cores.size()));
             uint8_t num_reserved_cores = 0;
-            for (auto eth_core : cores) {
+            for (const auto eth_core : cores) {
                 if (num_reserved_cores == num_cores_to_reserve) {
                     pairs_done.insert(std::make_pair(chip_id, connected_chip_id));
                     pairs_done.insert(std::make_pair(connected_chip_id, chip_id));
