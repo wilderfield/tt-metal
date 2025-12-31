@@ -363,7 +363,7 @@ void RecvAsyncMeshWorkloadFactory::override_runtime_arguments(
                 writer_runtime_args[1] = output_tensor.buffer()->address();
             }
         } else {
-            for (auto receiver_core_coord : receiver_core_coords) {
+            for (const auto& receiver_core_coord : receiver_core_coords) {
                 auto& reader_runtime_args = GetRuntimeArgs(program, reader_kernel_id, receiver_core_coord);
                 auto& writer_runtime_args = GetRuntimeArgs(program, writer_kernel_id, receiver_core_coord);
 
