@@ -212,7 +212,7 @@ bool cb_config_successful(
                 cb_config_vector);
 
             uint32_t cb_addr = l1_unreserved_base;
-            for (auto config : program_config.cb_config_vector) {
+            for (const auto& config : program_config.cb_config_vector) {
                 const uint32_t index = config.cb_id * sizeof(uint32_t);
                 const uint32_t cb_num_pages = config.num_pages;
                 const uint32_t cb_size = cb_num_pages * config.page_size;
